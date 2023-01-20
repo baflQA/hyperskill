@@ -1,0 +1,18 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: NaN == NaN
+- text: Infinity == Infinity
+- text: NaN === NaN
+- text: Infinity == -Infinity
+files:
+- name: main.js
+  visible: true
+  text: |+
+    // You can experiment here, it won’t be checked
+
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/24020#comment
+status: Solved
+record: -1
+local_check: false

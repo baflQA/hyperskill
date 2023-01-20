@@ -1,0 +1,12 @@
+type: code
+files:
+- name: main.js
+  visible: true
+  text: // Write a function returnNumber here
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/24018#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Wed, 18 Jan 2023 21:30:17 UTC"
+record: -1

@@ -1,0 +1,38 @@
+<h2>Break and Continue</h2>
+<p>When writing loops in programs, you often have to change their standard behavior: finish their execution earlier or skip some iterations (one execution of a loop body is called iteration). This more flexible work with loops is possible due to two operators: <code class="language-javascript">break</code> and <code class="language-javascript">continue</code>. In this topic, we will learn how to work with them.</p>
+<h5 id="the-break-operator" style="text-align: center;">The break operator</h5>
+<p>Most often, the loop execution ends when its condition becomes <code class="language-javascript">false</code>, but the <code class="language-javascript">break</code> operator allows you to exit the loop at any moment you need. Consider the code sample where this operator is used:</p>
+<pre><code class="language-javascript">for (let n = 1; n &lt;= 50; n++) {
+  if (n == 5) {
+    break;
+  }
+  console.log(n); // 4
+}</code></pre>
+<p>In the example above, we've created a counter that had to return values between 1 and 50. However, it does not happen because we have set a condition to exit the loop using the <code class="language-javascript">break</code> operator. It breaks the loop after 5 iterations.</p>
+<p> </p>
+<p></p><div class="alert alert-warning">Be careful: it only completes the loop it's in at the moment. If this loop is executed inside another loop, the external loop will not be stopped.</div>
+<p> </p>
+<p>The <code class="language-javascript">break</code> operator has two applications:</p>
+<ul>
+<li>it terminates the current loop of any type (<code class="language-javascript">for</code>, <code class="language-javascript">while</code>, <code class="language-javascript">do-while</code>);</li>
+<li>it terminates a case in the <code class="language-javascript">switch</code> statement;</li>
+</ul>
+<p>The <code class="language-javascript">break</code> operator is most often applied when a loop cannot be executed for some reason, such as when the application detects an error. In other cases, it can be used to end running processes, such as exiting a game or a program.</p>
+<h5 id="the-continue-operator" style="text-align: center;">The continue operator</h5>
+<p>The <code class="language-javascript">continue</code> operator allows you to stop the current loop iteration and start a new one.</p>
+<p>This operator can be used inside any kind of loop:</p>
+<ul>
+<li>inside the <code class="language-javascript">while</code> or<strong> </strong><code class="language-javascript">do-while</code><strong> </strong>loop, it returns directly to the loop condition;</li>
+<li>inside the <code class="language-javascript">for</code> loop, it first calculates the increment expression and then returns to the condition.</li>
+</ul>
+<p>It is used if it's clear that there is nothing else to do on the current loop iteration. Thus, the following code will print all the even numbers from 1 to 10 into the console:</p>
+<pre><code class="language-javascript">for (let n = 1; n &lt;= 10; n++) {
+  if (n % 2 !== 0) {
+    continue;
+  }
+  console.log(n); // 2 4 6 8 10
+} </code></pre>
+<p> </p>
+<p></p><div class="alert alert-warning">You cannot use <code class="language-javascript">break</code> and <code class="language-javascript">continue</code> with the <code class="language-javascript">?</code> operator because such constructions lead to errors.</div>
+<p> </p>
+<p>Now that you know it all, you will not be afraid of any loops: you can even find a way out of an infinite loop!</p>

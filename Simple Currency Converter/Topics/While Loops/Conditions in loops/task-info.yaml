@@ -1,0 +1,18 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: The while and “do...while” loops are identical
+- text: A condition in the while loop is checked before entering the loop
+- text: A condition in the while loop is checked after running one iteration
+- text: The “do...while” loop runs at least once
+files:
+- name: main.js
+  visible: true
+  text: |+
+    // You can experiment here, it won’t be checked
+
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/9130#comment
+status: Solved
+record: -1
+local_check: false

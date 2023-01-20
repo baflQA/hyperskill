@@ -1,0 +1,23 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: "<code>function sayHi() {<br> \_ \_ alert(\"Hello\"); <br>}</code>"
+- text: "<code>let sum = function(a, b) {<br> \_ \_ return a + b; <br>}</code>"
+- text: "<code>function sum(a, b) {<br> \_ \_ return a + b;<br>}</code>"
+files:
+- name: main.js
+  visible: true
+  text: |+
+    // You can experiment here, it won’t be checked
+
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/24013#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Wed, 18 Jan 2023 21:32:41 UTC"
+record: -1
+selected_options:
+- 0
+- 2
+local_check: false

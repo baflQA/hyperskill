@@ -1,0 +1,22 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: 96 97 98 99 100
+- text: 99 98 97 96
+- text: 99 98 97 96 95
+- text: 100 99 98 97 96
+- text: An error will occur at runtime
+- text: 95 96 97 98 99 100
+- text: 100 99 98 97 96 95
+- text: The cycle will run infinitely
+files:
+- name: main.js
+  visible: true
+  text: |+
+    // You can experiment here, it won’t be checked
+
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/9375#comment
+status: Solved
+record: -1
+local_check: false

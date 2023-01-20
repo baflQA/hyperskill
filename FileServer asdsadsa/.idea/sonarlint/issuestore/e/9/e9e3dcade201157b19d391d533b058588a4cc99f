@@ -1,0 +1,16 @@
+
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ÌŒËÑÿÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(½ÈØ‘
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ÞÔÑïÿÿÿÿÿ
+‚
+java:S11302"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(©öä¥
+N	java:S1066"9Replace this use of System.out or System.err by a logger.(ã—Æš
+N	java:S1068"9Replace this use of System.out or System.err by a logger.(¦¦Ïî
+‚
+java:S1130<"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(Æ³Œ™
+N	java:S106A"9Replace this use of System.out or System.err by a logger.(ÓñÆž
+N	java:S106C"9Replace this use of System.out or System.err by a logger.(È±Žê
+‚
+java:S1130G"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(Š¿ý¼
+N	java:S106J"9Replace this use of System.out or System.err by a logger.(¡ŠÆØ
+N	java:S106L"9Replace this use of System.out or System.err by a logger.(È±Žê

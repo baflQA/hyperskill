@@ -1,0 +1,57 @@
+<h2>Builtin JS Functions</h2>
+<p>You should already know what a <code class="language-javascript">function</code> is. Our imagination is unlimited, we can create any functions required in our project. However, in many programming languages, there are <strong>built-in functions</strong> that are needed everywhere. In this topic, we will study the examples of such functions.</p>
+<h5 id="isnan">isNan()</h5>
+<p>You should remember that there is <code class="language-javascript">NaN</code> (Not-a-Number) value in JavaScript because arithmetic operations should not stop the program by design. How can we get <code class="language-javascript">NaN</code> in our code? Take a look at the examples of expressions that return <code class="language-javascript">NaN</code>:</p>
+<pre><code class="language-javascript">//all return NaN
+
+5 * 'word'
+
+0 * Infinity
+
+Math.sqrt(-1)</code></pre>
+<p>You can see that all expressions should return something strange, and it is <code class="language-javascript">NaN</code>. Since any value must belong to some data type, it's a fun fact that <code class="language-javascript">NaN</code> type is actually <code class="language-javascript">number</code>.</p>
+<p>Let's find out what the <code class="language-javascript">isNan()</code> function is for. Consider that to work out some block of code, we need to check that the value of some variable is NaN. How should we do it? Here's what comes to mind first:</p>
+<pre><code class="language-javascript">let x = NaN
+if (x == NaN) {
+    console.log('It works!')
+}</code></pre>
+<p>But it will not work! The result of the expression <code class="language-javascript">NaN == NaN</code> is defined by the JavaScript language specification (ECMAScript specification). According to it, if one of the elements in the comparison expression is <code class="language-javascript">NaN</code>, then <code class="language-javascript">false</code> will be returned, even if the expression is <code class="language-javascript">NaN == NaN</code>. That is why, if you want to check if a value is <code class="language-javascript">NaN</code>, then you should use the <code class="language-javascript">isNaN()</code> function.</p>
+<pre><code class="language-javascript">let x = NaN
+if (isNaN(x)) {
+    console.log('It works!') //It will work
+}</code></pre>
+<p>As you can see, this function is built-in because we didn't declare it.</p>
+<h5 id="isfinite">isFinite()</h5>
+<p>It's worth starting with the fact that <code class="language-javascript">NaN</code> is not the only special value. You have to remember two more values, <code class="language-javascript">Infinity</code> and <code class="language-javascript">-Infinity</code>, which are also of the <code class="language-javascript">number</code> type. Let's take a look at when they can appear in a program.</p>
+<pre><code class="language-javascript">1 / 0 //return Infinity
+-5 / 0 //return -Infinity</code></pre>
+<p>The name of the <code class="language-javascript">isFinite()</code> function probably speaks for itself. This function checks whether the value of a variable or the result of an expression is a finite number. It returns <code class="language-javascript">true</code> if the expression is finite and <code class="language-javascript">false</code> if the value of the variable is <code class="language-javascript">NaN</code>. Let's study an example:</p>
+<pre><code class="language-javascript">if (isFinite(1 / 0)) {
+    console.log('It is finite!')
+} else {
+    console.log('It is not finite!!!') //it will log 
+}</code></pre>
+<p>Of course, a number that is divisible by zero gives <code class="language-javascript">Infinity</code>, so it is not a finite number, and it will be output in the else block.</p>
+<h5 id="parsefloat">parseFloat()</h5>
+<p>Let's consider one more function, <code class="language-javascript">parseFloat()</code>. It takes a string as an argument and returns a floating point number if it is on the left, or <code class="language-javascript">NaN</code> if the first character of the string is not a number. Consider the following simple example:</p>
+<pre><code class="language-java">console.log(parseFloat("4.121323Hello"))
+console.log(parseFloat("Hello4.121323"))
+console.log(parseFloat("Good morning!"))</code></pre>
+<p>The following values will be output to the console:</p>
+<pre><code class="language-javascript">4.121323
+NaN
+NaN</code></pre>
+<p>This is another example where the result of a function can be <code class="language-javascript">NaN</code>. The function works in the first case, because the number is on the left, and the function discards the right part with letters. Otherwise, the first character of the string is not a number, so the function immediately returns <code class="language-javascript">NaN</code>.</p>
+<h5 id="parseint">parseInt()</h5>
+<p>This function is very similar to the previous one, the difference is that it takes a string as the first argument and a radix as the second argument. The second argument is optional, but note that the radix is not always the default number 10! Let's look at the following example:</p>
+<pre><code class="language-javascript">console.log(parseInt('451Something', 10)) // 451
+
+console.log(parseInt('451Something', 8)) // 297
+
+console.log(parseInt('25FA3Something', 16)) //155555
+
+console.log(parseInt('Something', 4)) //NaN</code></pre>
+<p>This function receives a string, which will be parsed according to the same rules as for <code class="language-javascript">parseFloat()</code> and radix. But the given number will be considered represented in the radix calculus system, and such a number will be returned to the decimal calculus system.</p>
+<p></p><div class="alert alert-primary">In some number systems, letters are considered part of the number. It is also worth remembering that the function can return NaN if the number obtained from the string cannot exist in the number system with radix.</div>
+<h5 id="conclusion">Conclusion</h5>
+<p>In this topic, you've examined various built-in functions that can be very useful if you use them wisely and follow all precautions so as not to get bugs. You've also learned about the special <code class="language-javascript">NaN</code>, <code class="language-javascript">Infinity</code>, and <code class="language-javascript">-Infinity</code> values, repeated the expressions that generate these values. An important fact here is that the three characters are considered to be of the number type.</p>

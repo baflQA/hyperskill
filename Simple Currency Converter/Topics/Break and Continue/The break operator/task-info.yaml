@@ -1,0 +1,19 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: You can't use it in the "switch" construction.
+- text: It only terminates the current cycles "for".
+- text: "It terminates the current loop of any type (for, while, do-while)."
+- text: It only terminates the current cycles "while" and "do-while".
+- text: It terminates a case in the "switch" statement.
+files:
+- name: main.js
+  visible: true
+  text: |+
+    // You can experiment here, it won’t be checked
+
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/9377#comment
+status: Solved
+record: -1
+local_check: false

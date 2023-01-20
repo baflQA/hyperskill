@@ -1,0 +1,16 @@
+type: code
+files:
+- name: main.js
+  visible: true
+  text: |-
+    let data = 'word_123something_other_word'
+
+
+    console.log(parseFloat(...)) //replace the ellipsis with the desired value
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/24024#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Wed, 18 Jan 2023 21:50:20 UTC"
+record: -1

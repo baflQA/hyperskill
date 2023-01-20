@@ -1,0 +1,12 @@
+type: code
+files:
+- name: main.js
+  visible: true
+  text: "let data = [5, -13, 3, 21, 0, 9]"
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/24026#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Wed, 18 Jan 2023 21:56:44 UTC"
+record: -1

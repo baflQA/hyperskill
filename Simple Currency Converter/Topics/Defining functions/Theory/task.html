@@ -1,0 +1,58 @@
+<h2>Defining functions</h2>
+<p></p><p>In serious programming, code repetition is a mortal sin. Code that is repetitive is very hard to read and just as hard to maintain in the future (especially if you work in a team). To avoid this, there are <strong>functions</strong>. Functions are needed in order to repeat the same action in many parts of the program. For example, you need to display a neat welcome message for the visitor somewhere else when they exit the site.</p>
+<p>There are several ways to declare a function in JavaScript, each of which fits a specific use case. In this topic, you will learn some basic ways to declare functions.</p>
+<h5 id="function-declaration">Function declaration</h5>
+<p><strong>Function declaration</strong> is a classic method of defining functions. It consists of:</p>
+<ol>
+<li>The <code class="language-javascript">function</code> keyword.</li>
+<li>A required identifier. A <strong>function identifier</strong> should clearly reflect what it does. Function identifiers can contain letters, digits, underscores, and dollar signs (same rules as variables). Usually, they are verbs.</li>
+<li>A pair of parentheses. The parentheses may include parameter names separated by commas: <code class="language-javascript">(parameter1, parameter2)</code>. Parameters are inputs that are passed to functions as names and behave as local variables. For example, when a user logs into an application, we may want the program to greet them by name.</li>
+<li>The function body, which consists of a pair of curly braces within which you can put the code to be executed. </li>
+</ol>
+<pre><code class="language-javascript">function sayHi(name) {
+  alert('Hello' + ' ' + name);
+}
+
+sayHi("Joe"); // "Hello Joe"</code></pre>
+<p>Declared functions are not executed immediately. They are "saved for later use", and will be executed later when they are invoked (called upon).</p>
+<p>The main feature<strong> </strong>of function declaration is that the interpreter that reads JavaScript defines the declaration before the rest of the code executes. This behavior of functions is called <strong>hoisting. </strong>Hoisting, or moving declarations to the top, is JavaScript's default behavior. So, we can call the function in the code before defining it, and this code will work just fine.</p>
+<pre><code class="language-javascript">sum(2, 3); // 5
+
+function sum(a, b) {
+  return a + b;
+}</code></pre>
+<ul>
+</ul>
+<h5 id="function-expression">Function expression</h5>
+<p><strong>Function expression</strong> is a function definition method that is part of an expression (usually, an assignment).</p>
+<pre><code class="language-javascript">let sayHi = function(name){
+  alert('Hello' + ' ' + name);
+}</code></pre>
+<p>Function expression is often defined as assigning an anonymous function to a variable. </p>
+<p>This way allows us to create an anonymous function that doesn't have any function identifier, which is the main difference between function expression and function declaration.</p>
+<p>Unlike function declarations, function expressions must be defined before they are called. Function expressions are created during the execution of the expression that creates them.</p>
+<p>In this case, the function will be created during the assignment operation.</p>
+<pre><code class="language-javascript">let sum = function(a, b) {
+  return a + b;
+}
+
+sum(2, 3)</code></pre>
+<h5 id="arrow-function-expression">Arrow function expression</h5>
+<p><strong>ECMAScript</strong> is a revision of the JavaScript Standard that has different versions (ES6, ES21, etc.). ES6 was released in 2015, and it's a milestone in the history of JavaScript. It added <strong>arrow functions</strong>.</p>
+<p>In the modern standard JavaScript, function expression can be declared using <strong>arrow notation</strong>. The advantage of arrow functions is that they have a shorter syntax than function expressions.</p>
+<pre><code class="language-javascript">let sum = (a, b) =&gt; {
+  return a + b;
+}
+
+sum(2, 3);</code></pre>
+<h5 id="the-function-constructor">The Function() constructor</h5>
+<p>Functions can also be defined with a built-in JavaScript function constructor called <code class="language-javascript">Function()</code>.</p>
+<pre><code class="language-javascript">const mult = new Function("a", "b", "return a * b");
+
+let x = mult(4, 3); // x = 12</code></pre>
+<p>In practice, this way of function definition is rarely used: you don't have to use a function constructor. The example above is the same as writing the following:</p>
+<pre><code class="language-javascript">const mult = function (a, b) {return a * b};
+
+let x = mult(4, 3); // x = 12</code></pre>
+<h5 id="conclusion">Conclusion</h5>
+<p>There are two main ways to define functions: function declaration<strong> </strong>and function expression. In this topic, you learned what function declaration consists of, and found out the main differences between these two ways of function definition. You also learned about declaring function expression using arrow notation.</p>

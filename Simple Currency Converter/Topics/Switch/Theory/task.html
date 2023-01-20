@@ -1,0 +1,89 @@
+<h2>Switch</h2>
+<p>You already know how to write conditions using <code class="language-javascript">if</code> operator. This construction is great for simple cases, but when it is used with too many branches it becomes way too complicated. There is another operator called <code class="language-javascript"><strong>switch</strong></code> that works better when you need to check multiple potential values. In this topic, you will learn how to use it.</p>
+<h5 id="switch-syntax">Switch syntax</h5>
+<p>Imagine you are helping to write a program for a train ticket app. You need to show the ticket price, which varies depending on the person's destination. Using the <code class="language-javascript">if</code> operator, you can do it like this:</p>
+<pre><code class="language-javascript">let cityTo = "Paris";
+
+if (cityTo === "Berlin") {
+  console.log("The price is $100");
+} else if (cityTo === "Paris") {
+  console.log("The price is $120");
+} else if (cityTo === "London") {
+  console.log("The price in $150");
+}</code></pre>
+<p>As a result, you will see the text "The price is $120" in the console.</p>
+<p>Even though there aren't too many destination options, the example above is still difficult to read and repetitive. It is not the best idea to process values using the <code class="language-javascript">if</code> operator: in such cases, it is better to use the <code class="language-javascript">switch</code> operator:</p>
+<pre><code class="language-javascript">let cityTo = "Paris";
+
+switch (cityTo) {
+  case "Berlin":
+    console.log("The price is $100");
+    break;
+  case "Paris":
+    console.log("The price is $120");
+    break;
+  case "London":
+    console.log("The price is $150");
+    break;
+}</code></pre>
+<p>The result will be the same.</p>
+<p>The <code class="language-javascript">switch</code> statement is used to perform specific actions depending on the value of the variable. It matches the value or expression in the parentheses (<code class="language-javascript">cityTo</code>) with each case clause ("Berlin", "Paris", and "London"). If the case clause is equal to the expression, the corresponding operator is executed (shown "The price is $120" in the console). For each <code class="language-javascript">case</code>, the operator checks the value in strict equality using type checking.</p>
+<p>Please pay attention to the <code class="language-javascript"><strong>break</strong></code> operator at the end of each case. We will look at this in more detail later.</p>
+<h5 id="processing-similar-cases">Processing similar cases</h5>
+<p>Let's say that the prices for a ticket to London and a ticket to Rome are the same. Now you can combine these cases to handle them together:</p>
+<pre><code class="language-javascript">let cityTo = "Rome";
+
+switch (cityTo) {
+  case "Berlin":
+    console.log("The price is $100");
+    break;
+  case "Paris":
+    console.log("The price is $120");
+    break;
+  case "London":
+  case "Rome":
+    console.log("The price is $150");
+    break;
+}</code></pre>
+<p>As a result, for both London and Rome you will see the text "The price is $150" in the console. </p>
+<p>What if you have the same price for all cities except Berlin, Paris, and London? It would be strange to list the names of all these cities with  identical prices. In this situation, it is better to use the <strong><code class="language-javascript">default</code> </strong>case of the <code class="language-javascript">switch</code> statement. Here's an example:</p>
+<pre><code class="language-javascript">switch (cityTo) {
+  case "Berlin":
+    console.log("The price is $100");
+    break;
+  case "Paris":
+    console.log("The price is $120");
+    break;
+  case "London":
+    console.log("The price is $150");
+    break;
+  default:
+    console.log("The price is $90");
+    break;
+}</code></pre>
+<p>If <code class="language-javascript">cityTo</code> is equal to <code class="language-javascript">Berlin</code>, you will get a message "The price is $100" in the console, just like before. If <code class="language-javascript">cityTo</code> contains "Stockholm ", "Athens", or "Helsinki", you will see "The price is $90".</p>
+<p>This way, the <code class="language-javascript">default</code> case works if a few cases don't match. The <code class="language-javascript">default</code> case can be placed in any part of the <code class="language-javascript">switch</code> statement, but by convention it is better to add it to the last clause.</p>
+<h5 id="break-operator">Break operator</h5>
+<p>In all previous examples, you probably noticed the <code class="language-javascript"><strong>break</strong></code> keyword added at the end of each code snippet. As a result, the program compared each expression and, when it was <em>true</em>, processed the associated block and stopped calculating the remaining cases. The situation would be different if we forgot to insert the <code class="language-javascript">break</code> keyword:</p>
+<pre><code class="language-javascript">let cityTo = "Berlin";
+
+switch (cityTo) {
+  case "Berlin":
+    console.log("The price is $100");
+  case "Paris":
+    console.log("The price is $120");
+  case "London":
+    console.log("The price is $150");
+  default:
+    console.log("The price is $90");
+}</code></pre>
+<p>When the browser finds the correct statement, it starts executing it until it finds the <code class="language-javascript">break</code> keyword. Without it, the browser will think that we don't want to stop the program, so it will continue to process other blocks of code even if they correspond to other <code class="language-javascript">cases</code>. Then,  the result of executing the code in the console will look like this:</p>
+<pre><code class="language-javascript">The price is $100
+The price is $120
+The price is $150
+The price is $90</code></pre>
+<p>That being said, please, do not forget to use the <code class="language-javascript">break</code> keyword after each code block to avoid errors!</p>
+<h5 id="advantages-of-switch-over-if-else-statements">Advantages of switch over if else statements</h5>
+<p>The if-else ladder in JavaScript always checks for a condition and based on that condition, the code inside of <code class="language-javascript">if-else</code> statement is executed whereas the switch statement checks and directly jumps on the case which is to be executed. For some cases, an equivalent if-else ladder takes substantially longer to execute than a switch statement. It's because a jump table for a switch is created by the compiler during compilation. As a result, during execution, it just chooses which case needs to be executed rather than determining whether a case is satisfied. Also, for some of the programs, the switch statement is more readable compared to the if-else ladder. At last, it all depends on the developer's preferences to choose between if-else and switch statements to maximize the program efficiency.</p>
+<h5 id="conclusion">Conclusion</h5>
+<p>Now you know that it is much more preferable to use the <code class="language-javascript">switch</code> statement instead of <code class="language-javascript">if</code> to handle several different variable values. Switch helps avoid unnecessary repetition and makes your code easier to read. It also gives you more options for managing the handler block using the <code class="language-javascript">break</code> and <code class="language-javascript">default</code> keywords.</p>
