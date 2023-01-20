@@ -1,11 +1,0 @@
-
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(ïëèÖıÿÿÿÿ8®É‹Ş/
-U	java:S106"9Replace this use of System.out or System.err by a logger.(Ã™É8–®É‹Ş/
-Z	java:S106A"9Replace this use of System.out or System.err by a logger.(¡¡â§ùÿÿÿÿ8×®É‹Ş/
-Z	java:S106D"9Replace this use of System.out or System.err by a logger.(Ë¸ÍÕùÿÿÿÿ8Ù®É‹Ş/
-U	java:S106O"9Replace this use of System.out or System.err by a logger.(¾ºÎ8ë®É‹Ş/
-Z	java:S106S"9Replace this use of System.out or System.err by a logger.(Ë¸ÍÕùÿÿÿÿ8ì®É‹Ş/
-c	java:S899^"BDo something with the "boolean" value returned by "createNewFile".(Ğ’Íùÿÿÿÿ8ø®É‹Ş/
-Z	java:S106d"9Replace this use of System.out or System.err by a logger.(¡¡â§ùÿÿÿÿ8ş®É‹Ş/
-i
-java:S1192A"GDefine a constant instead of duplicating this literal "Sent: " 5 times.(¡¡â§ùÿÿÿÿ8¯É‹Ş/
