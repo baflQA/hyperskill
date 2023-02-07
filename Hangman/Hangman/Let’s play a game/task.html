@@ -1,0 +1,20 @@
+<h5 id="description">Description</h5>
+<p>In this stage, we will add some simple gameplay. There will be two possible outcomes. Let's first print a welcoming message and then ask players to guess the word we have set for the game. If they guess the word, the game reports a win; otherwise, it will "hang" the player.</p>
+<p>To simplify getting input from the console, we're using a JS library, check out the <a href="https://github.com/hyperskill/sync-input#usage" rel="noopener noreferrer nofollow" target="_blank">documentation</a> to see how it's used.</p>
+<h5 id="objectives">Objectives</h5>
+<ul>
+<li>Ask players for a possible word;</li>
+<li>Print <code class="java">You survived!</code> if users guess the word;</li>
+<li>Print <code class="java">You lost!</code> if users fail.</li>
+</ul>
+<p></p><div class="alert alert-primary">In this stage, <code class="java">python</code> is the word that players need to guess. For now, this is the only form of answer that is deemed correct, so there is no need to worry about the register or punctuation marks.</div><p></p>
+<h5 id="examples">Examples</h5>
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.</p>
+<p><strong>Example 1</strong>:</p>
+<pre><code class="language-no-highlight">H A N G M A N
+Guess the word: &gt; python
+You survived!</code></pre>
+<p><strong>Example 2</strong>:</p>
+<pre><code class="language-no-highlight">H A N G M A N
+Guess the word: &gt; java
+You lost!</code></pre>

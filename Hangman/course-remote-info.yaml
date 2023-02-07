@@ -1,21 +1,33 @@
 hyperskill_project:
-  id: 231
-  ide_files: https://stepik.org/media/attachments/lesson/652742/additional_files.json
+  id: 265
+  ide_files: https://stepik.org/media/attachments/lesson/746995/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: "Fri, 20 Jan 2023 17:54:57 UTC"
+update_date: "Tue, 07 Feb 2023 20:12:46 UTC"
 stages:
-- id: 1157
-  step: 17897
+- id: 1339
+  step: 20572
   is_completed: true
-- id: 1158
-  step: 17898
+- id: 1340
+  step: 20573
   is_completed: true
-- id: 1159
-  step: 17899
+- id: 1341
+  step: 20574
   is_completed: true
-- id: 1160
-  step: 17900
+- id: 1342
+  step: 20575
+  is_completed: true
+- id: 1343
+  step: 20576
+  is_completed: true
+- id: 1344
+  step: 20577
+  is_completed: true
+- id: 1345
+  step: 20578
+  is_completed: false
+- id: 1346
+  step: 20579
   is_completed: false
 topics:
   0:
@@ -27,8 +39,6 @@ topics:
     theory_id: 8170
   - title: JavaScript Code Style
     theory_id: 9916
-  - title: Naming variables
-    theory_id: 8364
   - title: Web development
     theory_id: 13931
   - title: Introduction to JavaScript
@@ -59,11 +69,10 @@ topics:
     theory_id: 8580
   - title: Conditional Operators
     theory_id: 8889
-  - title: Introduction to String
-    theory_id: 17747
-  - title: Template literals
-    theory_id: 8731
   1:
+  - title: Naming variables
+    theory_id: 8364
+  2:
   - title: Defining functions
     theory_id: 24012
   - title: Builtin JS Functions
@@ -76,21 +85,29 @@ topics:
     theory_id: 8455
   - title: Introduction to Arrays
     theory_id: 16141
+  - title: Random
+    theory_id: 18841
+  3:
+  - title: Computer algorithms
+    theory_id: 16547
+  - title: The big O notation
+    theory_id: 16699
+  - title: Pseudocode
+    theory_id: 15090
   - title: Array creation
     theory_id: 16356
-  - title: Object methods and keyword "this"
-    theory_id: 8715
-  - title: ForEach method
-    theory_id: 10133
   - title: Increment and Decrement
     theory_id: 9102
   - title: For Loops
     theory_id: 9119
-  2:
-  - title: Switch
-    theory_id: 10689
-  3:
+  - title: Introduction to String
+    theory_id: 17747
+  - title: String searching
+    theory_id: 17771
+  - title: Basic string methods
+    theory_id: 17755
+  - title: Template literals
+    theory_id: 8731
+  5:
   - title: While Loops
     theory_id: 9128
-  - title: Break and Continue
-    theory_id: 9374

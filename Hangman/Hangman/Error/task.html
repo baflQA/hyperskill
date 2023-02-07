@@ -1,0 +1,116 @@
+<h5 id="description">Description</h5>
+<p>The skeleton of the game is ready; let's put some more gameplay meat on it.</p>
+<p>In the previous stage, if players entered the same letter twice or more, the program reduced the number of remaining attempts regardless of whether this was a correct letter or not. This doesn’t seem fair, right? Players gain nothing, and the number of attempts gets smaller. Let's fix it!</p>
+<h5 id="objectives">Objectives</h5>
+<p>To complete this stage, follow the suggested order of the required checks:</p>
+<ul>
+<li>Check whether players enter exactly one letter. If not, print <code class="java">Please, input a single letter.</code>. Remember that when players input nothing or non-letter characters, it shouldn't count as a correct input either;</li>
+<li>Make sure that the player entered a lowercase English letter. If not, the program should print <code class="java">Please, enter a lowercase letter from the English alphabet.</code>;</li>
+<li>If users enter the same letter twice (doesn't matter whether it appears in the word or not), then the program should output <code class="java">You've already guessed this letter.</code>. Do not decrease the number of attempts in this case;</li>
+<li>None of the three errors described above should reduce the number of remaining attempts!</li>
+<li>When players win, print <code class="java">You guessed the word &lt;word&gt;!</code>, where <code class="java">&lt;word&gt;</code> should be substituted with the uncovered word, and the winning message. Each one should be on a new line.</li>
+</ul>
+<p></p><div class="alert alert-warning">Please, make sure that the output format of your program follows the example precisely. Pay attention to the empty lines between attempts and at the end.</div><p></p>
+<h5 id="examples">Examples</h5>
+<p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.  Comments after <code class="java">#</code> provided for illustrative purposes and not as part of the task.</p>
+<p><strong>Example 1</strong>:</p>
+<pre><code class="language-no-highlight">H A N G M A N  # 8 attempts
+
+----------
+Input a letter: &gt; a
+
+-a-a------
+Input a letter: &gt; i
+
+-a-a---i--
+Input a letter: &gt; o
+That letter doesn't appear in the word.  # 7 attempts
+
+-a-a---i--
+Input a letter: &gt; o
+You've already guessed this letter.
+
+-a-a---i--
+Input a letter: &gt; p
+
+-a-a---ip-
+Input a letter: &gt; p
+You've already guessed this letter.
+
+-a-a---ip-
+Input a letter: &gt; h
+That letter doesn't appear in the word.  # 6 attempts
+
+-a-a---ip-
+Input a letter: &gt; k
+That letter doesn't appear in the word.  # 5 attempts
+
+-a-a---ip-
+Input a letter: &gt; a
+You've already guessed this letter.
+
+-a-a---ip-
+Input a letter: &gt; z
+That letter doesn't appear in the word.  # 4 attempts
+
+-a-a---ip-
+Input a letter: &gt; t
+
+-a-a---ipt
+Input a letter: &gt; x
+That letter doesn't appear in the word.  # 3 attempts
+
+-a-a---ipt
+Input a letter: &gt; b
+That letter doesn't appear in the word.  # 2 attempts
+
+-a-a---ipt
+Input a letter: &gt; d
+That letter doesn't appear in the word.  # 1 attempt
+
+-a-a---ipt
+Input a letter: &gt; w
+That letter doesn't appear in the word.  # 0 attempts
+
+You lost!</code></pre>
+<p><strong>Example 2</strong>:</p>
+<pre><code class="language-no-highlight">H A N G M A N  # 8 attempts
+
+----
+Input a letter: &gt; j
+
+j---
+Input a letter: &gt; i
+That letter doesn't appear in the word.  # 7 attempts
+
+j---
+Input a letter: &gt; +
+Please, enter a lowercase letter from the English alphabet.
+
+j---
+Input a letter: &gt; A
+Please, enter a lowercase letter from the English alphabet.
+
+j---
+Input a letter: &gt; ii
+Please, input a single letter.
+
+j---
+Input a letter: &gt; ++
+Please, input a single letter.
+
+j---
+Input a letter: &gt;
+Please, input a single letter.
+
+j---
+Input a letter: &gt; g
+That letter doesn't appear in the word.  # 6 attempts
+
+j---
+Input a letter: &gt; a
+
+ja-a
+Input a letter: &gt; v
+You guessed the word java!
+You survived!</code></pre>

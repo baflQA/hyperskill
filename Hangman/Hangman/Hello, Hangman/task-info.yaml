@@ -1,0 +1,39 @@
+type: remote_edu
+files:
+- name: main.js
+  visible: true
+  text: |-
+    // Use "input()" to input a line from the user
+    // Use "input(str)" to print some text before requesting input
+    // You will need this in the following stages
+    const input = require('sync-input')
+
+    console.log("Hello, World!")
+  learner_created: false
+- name: tests.py
+  visible: false
+  text: |
+    from hstest import StageTest, dynamic_test, TestedProgram, WrongAnswer, CheckResult
+
+
+    class HangmanTest(StageTest):
+
+        @dynamic_test()
+        def test_should_print_correct_announcement(self):
+            correct_announcement = """H A N G M A N\nThe game will be available soon."""
+            pr = TestedProgram(self.source_name)
+            output = pr.start()
+
+            if correct_announcement.strip() != output.strip():
+                raise WrongAnswer('Please, print the output exactly like it is given in the example.')
+
+            return CheckResult.correct()
+
+
+    if __name__ == '__main__':
+        HangmanTest('hangman.hangman').run_tests()
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/20572#comment
+check_profile: hyperskill_node_javascript
+status: Solved
+record: 1

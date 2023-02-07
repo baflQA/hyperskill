@@ -1,0 +1,55 @@
+<p></p><h5 id="description">Description</h5><p>In this stage, let's add a little more flavor to the game by constructing a menu to restart the program after the current session ends.</p><h5 id="objectives">Objectives</h5><ul><li><p>The game now starts with the menu where players can choose to either play, see their score, or exit;</p></li><li><p>Print <code class="java">Type "play" to play the game, "results" to show the scoreboard, and "exit" to quit:</code> and show this message again if players input something else;</p></li><li><p>If players choose <code class="java">play</code>, start the game. When the game is finished (regardless of whether a player wins or not), pop up the menu once again to make the gameplay seamless;</p></li><li><p>If players choose <code class="java">results</code>, print how many games they won, e.g. <code class="java">You won: 0 times.</code>, and how many games they lost, e.g. <code class="java">You lost: 25 times.</code>;</p></li><li><p>If players choose <code class="java">exit</code>, end the game.</p></li></ul><p></p><div class="alert alert-warning"><p>Please, make sure that the output format of your program follows the example precisely. Pay attention to the empty lines between attempts and at the end.</p></div><p></p><h5 id="example">Example</h5><p>The greater-than symbol followed by a space (<code class="java">&gt; </code>) represents the user input. Note that it's not part of the input.  Comments after <code class="java">#</code> provided for illustrative purposes and not as part of the task.</p><p><strong>Example 1</strong>:</p><pre><code class="language-no-highlight">H A N G M A N  # 8 attempts
+Type "play" to play the game, "results" to show the scoreboard, and "exit" to quit: &gt; play
+
+------
+Input a letter: &gt; h
+
+---h--
+Input a letter: &gt; K
+Please, enter a lowercase letter from the English alphabet.
+
+---h--
+Input a letter: &gt; t
+
+--th--
+Input a letter: &gt; o
+
+--tho-
+Input a letter: &gt; +
+Please, enter a lowercase letter from the English alphabet.
+
+--tho-
+Input a letter: &gt; K
+Please, enter a lowercase letter from the English alphabet.
+
+--tho-
+Input a letter: &gt; h
+You've already guessed this letter.
+
+--tho-
+Input a letter: &gt; K
+Please, enter a lowercase letter from the English alphabet.
+
+--tho-
+Input a letter: &gt; n
+
+--thon
+Input a letter: &gt; q
+That letter doesn't appear in the word.  # 7 attempts
+
+--thon
+Input a letter: &gt; y
+
+-ython
+Input a letter: &gt; h
+You've already guessed this letter.
+
+-ython
+Input a letter: &gt; p
+
+You guessed the word python!
+You survived!
+Type "play" to play the game, "results" to show the scoreboard, and "exit" to quit: &gt; results
+You won: 1 times.
+You lost: 0 times.
+Type "play" to play the game, "results" to show the scoreboard, and "exit" to quit: &gt; exit</code></pre>

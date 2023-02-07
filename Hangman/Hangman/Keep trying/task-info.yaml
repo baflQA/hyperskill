@@ -1,0 +1,442 @@
+type: remote_edu
+files:
+- name: main.js
+  visible: true
+  text: |-
+    // Use "input()" to input a line from the user
+    // Use "input(str)" to print some text before requesting input
+    // You will need this in the following stages
+    const input = require('sync-input')
+
+    console.log("H A N G M A N\nThe game will be available soon.")
+  learner_created: false
+- name: tests.py
+  visible: false
+  text: |
+    from typing import List
+
+    from hstest import StageTest, dynamic_test, TestedProgram, WrongAnswer, TestPassed, CheckResult
+    from string import ascii_lowercase
+    from random import shuffle
+
+
+    class LetterAlreadyOpenedError(Exception):
+
+        def __init__(self, letter: str):
+            self.letter = letter
+
+
+    class CorrectLettersToOpenOverError(Exception):
+        pass
+
+
+    class IncorrectLettersToOpenOverError(Exception):
+        pass
+
+
+    class EmptyCorrectLettersToOpenError(Exception):
+        pass
+
+
+    class TriesOverError(Exception):
+        pass
+
+
+    class OutputContainsInputAnnouncementError(Exception):
+        pass
+
+
+    class OutputNotContainsInputAnnouncementError(Exception):
+        pass
+
+
+    class OutputContainsIncorrectLetterMessageError(Exception):
+        pass
+
+
+    class OutputNotContainsIncorrectLetterMessageError(Exception):
+        pass
+
+
+    class OutputNotContainsThanksMessageError(Exception):
+        pass
+
+
+    class WrongLinesCountError(Exception):
+        pass
+
+
+    class InitialMaskContainsInvalidCharactersError(Exception):
+        pass
+
+
+    class IncorrectMaskTransitionError(Exception):
+        pass
+
+
+    class GameOverException(Exception):
+        pass
+
+
+    class Config:
+        MAX_TRIES = 8
+        INPUT_ANNOUNCEMENT = 'Input a letter'
+        INCORRECT_LETTER_MESSAGE = 'That letter doesn\'t appear in the word'
+        THANKS_MESSAGE = 'Thanks for playing!'
+
+        @staticmethod
+        def languages():
+            return [
+                'java',
+                'python',
+                'swift',
+                'javascript',
+            ]
+
+        @classmethod
+        def mask_language_map(cls):
+            return {cls.make_language_mask(language): language for language in cls.languages()}
+
+        @classmethod
+        def make_language_mask(cls, word):
+            return '-' * len(word)
+
+
+    class GameState:
+
+        def __init__(self, program: TestedProgram, language: str, tries: int):
+            self.program = program
+            self.language = language
+            self.tries = tries
+            self.correct_letters_to_open = self._language_correct_letters(language) * self.tries
+            self.incorrect_letters_to_open = self._language_incorrect_letters(language)
+            self.opened_letters = []
+            self.current_letter = None
+            self.output = None
+            self.current_language_mask = self._language_mask(language, self.opened_letters)
+            self.prev_language_mask = self._language_mask(language, self.opened_letters)
+            shuffle(self.correct_letters_to_open)
+            shuffle(self.incorrect_letters_to_open)
+
+        def open_correct_letter(self):
+            self.current_letter = self._next_correct_letter_to_open()
+            self.output = self.program.execute(self.current_letter).strip()
+
+            if self.current_letter not in self.opened_letters:
+                self.opened_letters.append(self.current_letter)
+
+            self._decrease_tries_count()
+            self._update_language_mask()
+
+        def open_incorrect_letter(self):
+            self.current_letter = self._next_incorrect_letter_to_open()
+            self.output = self.program.execute(self.current_letter).strip()
+            self._decrease_tries_count()
+            self._update_language_mask()
+
+        def _decrease_tries_count(self):
+            if self.tries <= 0:
+                raise TriesOverError()
+
+            self.tries -= 1
+
+        def _update_language_mask(self):
+            self.prev_language_mask = self.current_language_mask
+            self.current_language_mask = self._language_mask(self.language, self.opened_letters)
+
+        def _next_correct_letter_to_open(self):
+            if len(self.correct_letters_to_open) <= 0:
+                raise CorrectLettersToOpenOverError()
+
+            return self.correct_letters_to_open.pop()
+
+        def _next_incorrect_letter_to_open(self):
+            if len(self.incorrect_letters_to_open) <= 0:
+                raise IncorrectLettersToOpenOverError()
+
+            return self.incorrect_letters_to_open.pop()
+
+        @property
+        def game_ended(self) -> bool:
+            return self.hanged
+
+        @property
+        def hanged(self) -> bool:
+            return self.tries <= 0
+
+        @property
+        def survived(self) -> bool:
+            return self.current_language_mask == self.language
+
+        @classmethod
+        def _language_mask(cls, language: str, opened_letters: list):
+            language_letters = list(language)
+            mask = ''
+
+            for letter in language_letters:
+                mask += letter if letter in opened_letters else '-'
+
+            return mask
+
+        @classmethod
+        def _language_correct_letters(cls, language: str) -> List[str]:
+            return list(set(language))
+
+        @classmethod
+        def _language_incorrect_letters(cls, language: str) -> List[str]:
+            return list(set(ascii_lowercase).difference(set(language)))
+
+
+    class ValidationHelper:
+
+        @classmethod
+        def output_should_contains_input_announcement(cls, output: str):
+            input_announcement = Config.INPUT_ANNOUNCEMENT
+
+            if input_announcement.lower() not in output.lower():
+                raise OutputNotContainsInputAnnouncementError()
+
+        @classmethod
+        def output_should_not_contains_input_announcement(cls, output: str):
+            input_announcement = Config.INPUT_ANNOUNCEMENT
+
+            if input_announcement.lower() in output.lower():
+                raise OutputContainsInputAnnouncementError()
+
+        @classmethod
+        def output_should_contains_incorrect_letter_message(cls, output: str):
+            message = Config.INCORRECT_LETTER_MESSAGE
+
+            if message.lower() not in output.lower():
+                raise OutputNotContainsIncorrectLetterMessageError()
+
+        @classmethod
+        def output_should_not_contains_incorrect_letter_message(cls, output: str):
+            message = Config.INCORRECT_LETTER_MESSAGE
+
+            if message.lower() in output.lower():
+                raise OutputContainsIncorrectLetterMessageError
+
+        @classmethod
+        def output_should_contains_thanks_message(cls, output: str):
+            message = Config.THANKS_MESSAGE
+
+            if message.lower() not in output.lower():
+                raise OutputNotContainsThanksMessageError()
+
+        @classmethod
+        def validate_min_lines_count(cls, lines: list, lines_count: int):
+            if len(lines) < lines_count:
+                raise WrongLinesCountError()
+
+        @classmethod
+        def initial_mask_should_contains_only_valid_characters(cls, mask: str):
+            if len(mask.replace('-', '')):
+                raise InitialMaskContainsInvalidCharactersError()
+
+
+    class FirstBlockLanguageMaskParser:
+
+        def __init__(self, output: str):
+            self.output = output
+            self.helper = ValidationHelper()
+            self.mask_line = 3
+            self.lines = []
+            self.mask = ''
+
+        def parse(self):
+            try:
+                self.helper.output_should_contains_input_announcement(self.output)
+                self.lines = self._get_lines_from_output()
+                self.helper.validate_min_lines_count(self.lines, self.mask_line)
+                self.mask = self._get_mask_from_lines()
+                self.helper.initial_mask_should_contains_only_valid_characters(self.mask)
+                language = self._get_language_from_mask()
+            except OutputNotContainsInputAnnouncementError:
+                raise WrongAnswer("The output doesn't contain any \"Input a letter\" lines.")
+            except WrongLinesCountError:
+                raise WrongAnswer(f"Cannot recognize a word from the mask. The mask should be on {self.mask_line} "
+                                  f"line but there are less than {self.mask_line} lines in the first block.")
+            except InitialMaskContainsInvalidCharactersError:
+                raise WrongAnswer(f"Cannot recognize a word from the mask. "
+                                  f"The mask \"{self.mask}\" contains non-dash characters.")
+
+            if language is None:
+                raise WrongAnswer(f"Cannot recognize a word from the mask \"{self.mask}\". "
+                                  f"Did you only use the words from the description?")
+
+            return language
+
+        def _get_lines_from_output(self):
+            return self.output.strip().split('\n')
+
+        def _get_mask_from_lines(self):
+            return self.lines[self.mask_line - 1]
+
+        def _get_language_from_mask(self):
+            for language_mask, language in Config.mask_language_map().items():
+                if language_mask == self.mask:
+                    return language
+
+            return None
+
+
+    class GameCommand:
+
+        def __init__(self):
+            self.helper = ValidationHelper()
+            self.state = None
+
+        def handle(self, state: GameState):
+            self.state = state
+
+            try:
+                self.change_state()
+                self.verify_on_game_end()
+                self.validate_mask_transition()
+                self.validate_output()
+            except OutputNotContainsInputAnnouncementError:
+                raise WrongAnswer("The output doesn't contain any \"Input a letter\" lines.")
+            except OutputContainsIncorrectLetterMessageError:
+                raise WrongAnswer(f"The output contains \"{Config.INCORRECT_LETTER_MESSAGE}\" message, "
+                                  f"but a letter \"{self.state.current_letter}\" "
+                                  f"is present in the word \"{self.state.language}\".")
+            except OutputNotContainsIncorrectLetterMessageError:
+                raise WrongAnswer(f"The output doesn't contain \"{Config.INCORRECT_LETTER_MESSAGE}\" message, "
+                                  f"but a letter \"{self.state.current_letter}\" doesn't appear"
+                                  f" in the word \"{self.state.language}\".")
+            except IncorrectMaskTransitionError:
+                raise WrongAnswer(f'Incorrect mask transition. Cannot find correct mask in the output:\n'
+                                  f'Word: {self.state.language}\n'
+                                  f'Letter: {self.state.current_letter}\n'
+                                  f'Previous mask: {self.state.prev_language_mask}\n'
+                                  f'Correct current mask: {self.state.current_language_mask}\n')
+
+        def change_state(self):
+            pass
+
+        def validate_output(self):
+            pass
+
+        def validate_mask_transition(self):
+            lines = self._get_lines_from_output(self.state.output)
+
+            for line in lines:
+                if line.strip() == self.state.current_language_mask:
+                    return
+
+            raise IncorrectMaskTransitionError
+
+        def verify_on_game_end(self):
+            if self.state.game_ended:
+                raise GameOverException
+
+        @classmethod
+        def _get_lines_from_output(cls, output: str):
+            return output.strip().split('\n')
+
+
+    class OpenCorrectLetterCommand(GameCommand):
+
+        def change_state(self):
+            self.state.open_correct_letter()
+
+        def validate_output(self):
+            output = self.state.output
+            self.helper.output_should_contains_input_announcement(output)
+            self.helper.output_should_not_contains_incorrect_letter_message(output)
+
+
+    class OpenIncorrectLetterCommand(GameCommand):
+
+        def change_state(self):
+            self.state.open_incorrect_letter()
+
+        def validate_output(self):
+            output = self.state.output
+            self.helper.output_should_contains_input_announcement(output)
+            self.helper.output_should_contains_incorrect_letter_message(output)
+
+
+    class HangmanTest(StageTest):
+
+        def __init__(self, source_name: str = ''):
+            super().__init__(source_name)
+            self.helper = ValidationHelper
+            self.history = {language: False for language in Config.languages()}
+
+        @dynamic_test(order=1, repeat=100)
+        def test_game_loop(self):
+            pr = TestedProgram(self.source_name)
+            first_block = pr.start().strip()
+            parser = FirstBlockLanguageMaskParser(first_block)
+            language = parser.parse()
+
+            if self._language_was_presented(language):
+                return CheckResult.correct()
+
+            game_state = GameState(program=pr, language=language, tries=Config.MAX_TRIES)
+            state_handlers = [
+                OpenCorrectLetterCommand(),
+                OpenIncorrectLetterCommand(),
+                OpenCorrectLetterCommand(),
+                OpenCorrectLetterCommand(),
+                OpenIncorrectLetterCommand(),
+                OpenCorrectLetterCommand(),
+                OpenIncorrectLetterCommand(),
+                OpenIncorrectLetterCommand(),
+            ]
+
+            shuffle(state_handlers)
+
+            self._run_game_handlers(state_handlers, game_state)
+            self._validate_last_block(game_state.output)
+            self._store_language_to_history(language)
+
+            return CheckResult.correct()
+
+        @dynamic_test(order=2)
+        def test_all_languages_from_description_should_be_presented_at_least_once(self):
+            if self._all_languages_from_description_was_presented_at_least_once():
+                return CheckResult.correct()
+
+            raise WrongAnswer("It looks like your program is not using "
+                              "all of the words to guess from the list in the description.")
+
+        def _all_languages_from_description_was_presented_at_least_once(self):
+            return all(self.history.values())
+
+        def _language_was_presented(self, language: str):
+            return self.history.get(language, False)
+
+        @classmethod
+        def _run_game_handlers(cls, handlers: list, game_state: GameState):
+            try:
+                for handler in handlers:
+                    handler.handle(game_state)
+            except GameOverException:
+                pass
+
+        def _validate_last_block(self, output: str):
+            try:
+                self.helper.output_should_contains_thanks_message(output)
+                self.helper.output_should_not_contains_input_announcement(output)
+            except OutputNotContainsThanksMessageError:
+                raise WrongAnswer(f"The last block should contain text \"{Config.THANKS_MESSAGE}\".")
+            except OutputContainsInputAnnouncementError:
+                raise WrongAnswer(f"The last block should not contain text \"{Config.INPUT_ANNOUNCEMENT}\".")
+
+        def _store_language_to_history(self, language: str):
+            self.history[language] = True
+
+
+    if __name__ == '__main__':
+        HangmanTest('hangman.hangman').run_tests()
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/20576#comment
+check_profile: hyperskill_node_javascript
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Sat, 28 Jan 2023 13:45:12 UTC"
+record: 5

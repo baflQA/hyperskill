@@ -1,0 +1,44 @@
+{
+  "_from": "https://github.com/hyperskill/sync-input/archive/release.tar.gz",
+  "_id": "sync-input@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-xwvUQthWMf3XhXXMQX+LU+GqAYL8o36fBhj3M+VTynxFf8LQs1xEU4lME337g0Bwrh10TxLCvvCNLDmVXa8POg==",
+  "_location": "/sync-input",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "sync-input@https://github.com/hyperskill/sync-input/archive/release.tar.gz",
+    "name": "sync-input",
+    "escapedName": "sync-input",
+    "rawSpec": "https://github.com/hyperskill/sync-input/archive/release.tar.gz",
+    "saveSpec": "https://github.com/hyperskill/sync-input/archive/release.tar.gz",
+    "fetchSpec": "https://github.com/hyperskill/sync-input/archive/release.tar.gz"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://github.com/hyperskill/sync-input/archive/release.tar.gz",
+  "_shasum": "4d6f945d502a8b31a1b9ff58249f098e5460a868",
+  "_spec": "sync-input@https://github.com/hyperskill/sync-input/archive/release.tar.gz",
+  "_where": "C:\\Users\\imsol\\PycharmProjects\\Hangman",
+  "author": {
+    "name": "Vladimir Turov"
+  },
+  "bugs": {
+    "url": "https://github.com/hyperskill/sync-input/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A small library that provides synchronous input function for NodeJS.",
+  "files": [
+    "index.js"
+  ],
+  "homepage": "https://github.com/hyperskill/sync-input#readme",
+  "main": "index.js",
+  "name": "sync-input",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyperskill/sync-input.git"
+  },
+  "version": "1.0.0"
+}

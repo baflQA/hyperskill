@@ -15,3 +15,9 @@ e
 5Topics/Builtin JS Functions/String conversion/main.js,3/a/3a061d5ed9042b7c5994f8f1a4cd252a1ee94317
 g
 7Topics/Builtin JS Functions/isFinite() function/main.js,0/5/055e38b15f034b79cd3ee8f02fb8813d98f8d58b
+j
+:Topics/Builtin JS Functions/parseInt() application/main.js,c/b/cb5ef8c3f692a4ec5fb5975e257f59763d744260
+W
+'Topics/While Loops/A bus driver/main.js,4/8/48a8d6bf8693b10ed09212ae2efcb4818d3d5cc3
+d
+4Topics/Break and Continue/The sum of numbers/main.js,2/a/2ad1eb00ae37b9fae89c06c6fd53a01a49f6e2b5
